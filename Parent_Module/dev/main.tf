@@ -16,8 +16,8 @@ module "virtual_networks" {
 }
 
 module "subnets" {
-  depends_on       = [module.virtual_networks]
-  source           = "../../azurerm_subnet"
-  subnets          = var.subnets
+  depends_on = [module.virtual_networks]
+  source     = "../../azurerm_subnet"
+  subnets    = var.subnets
 }
 
