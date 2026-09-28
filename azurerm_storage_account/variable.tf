@@ -1,10 +1,3 @@
-variable "resource_groups" {
-  type = map(object({
-    name     = string
-    location = string
-  }))
-}
-
 variable "storage_accounts" {
   type = map(object({
     storage_account_name     = string

@@ -1,11 +1,8 @@
-variable "resource_group_name" {
-  description = "The name of the resource group in which to create the storage account."
-  type        = string
-}
-resource "azurerm_storage_account" "example" {
-  name                     = "storageaccountname"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
-  account_tier             = "Standard"
-  account_replication_type = "GRS"
+resource "azurerm_storage_account" "sa" {
+  for_each                 = var.storage_accounts
+  name                     = each.value.storage_account_name
+  resource_group_name      = each.value.resource_group_name
+  location                 = each.value.location
+  account_tier             = each.value.account_tier
+  account_replication_type = each.value.account_replication_type
 }
