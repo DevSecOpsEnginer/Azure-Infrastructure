@@ -1,37 +1,43 @@
-resource "azurerm_virtual_machine" "main" {
-  name                  = "vm"
-  location              = azurerm_resource_group.example.location
-  resource_group_name   = azurerm_resource_group.example.name
-  network_interface_ids = [azurerm_network_interface.main.id]
-  vm_size               = "Standard_DS1_v2"
+resource "azurerm_network_interface" "nic" {
+  for_each            = var.compute_instances
+  name                = each.value.nic_name
+  location            = each.value.nic_location
+  resource_group_name = each.value.nic_resource_group_name
 
-  # Uncomment this line to delete the OS disk automatically when deleting the VM
-  # delete_os_disk_on_termination = true
+  ip_configuration {
+    name                          = each.value.nic_ip_configuration_name
+    subnet_id                     = each.value.nic_subnet_id
+    private_ip_address_allocation = each.value.nic_private_ip_address_allocation
+  }
+}
 
-  # Uncomment this line to delete the data disks automatically when deleting the VM
-  # delete_data_disks_on_termination = true
+resource "azurerm_linux_virtual_machine" "vm" {
+  for_each                        = var.compute_instances
+  name                            = each.value.vm_name
+  resource_group_name             = each.value.vm_resource_group_name
+  location                        = each.value.vm_location
+  size                            = each.value.vm_size
+  disable_password_authentication = false
+  admin_username                  = each.value.vm_admin_username
+  admin_password                  = each.value.vm_admin_password
+  network_interface_ids = [
+    azurerm_network_interface.nic.id,
+  ]
 
-  storage_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
+  # admin_ssh_key {
+  #   username   = "adminuser"
+  #   public_key = file("~/.ssh/id_rsa.pub")
+  # }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = each.value.vm_publisher
+    offer     = each.value.vm_offer
+    sku       = each.value.vm_sku
     version   = "latest"
-  }
-  storage_os_disk {
-    name              = "myosdisk1"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
-  }
-  os_profile {
-    computer_name  = "hostname"
-    admin_username = "testadmin"
-    admin_password = "Password1234!"
-  }
-  os_profile_linux_config {
-    disable_password_authentication = false
-  }
-  tags = {
-    environment = "staging"
   }
 }

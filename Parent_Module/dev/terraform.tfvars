@@ -38,4 +38,49 @@ subnets = {
     virtual_network_name = "dev-eastus-vnet1"
     address_prefixes     = ["10.0.2.0/24"]
   }
-} 
+}
+
+compute_instances = {
+  "FE_Compute_instance" = {
+    nic_name                          = "dev-eastus-nic1"
+    nic_location                      = "East US"
+    nic_resource_group_name           = "dev-eastus-rg1"
+    nic_ip_configuration_name         = "dev-eastus-ipconfig1"
+    nic_subnet_id                     = "/subscriptions/your-subscription-id/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/virtualNetworks/dev-eastus-vnet1/subnets/dev-frontend-subnet1"
+    nic_private_ip_address_allocation = "Dynamic"
+
+    vm_name                = "dev-eastus-vm1"
+    vm_resource_group_name = "dev-eastus-rg1"
+    vm_location            = "East US"
+    vm_size                = "Standard_B1s"
+    vm_admin_username      = "adminuser"
+    vm_admin_password      = "P@ssw0rd1234!"
+
+    vm_publisher = "Canonical"
+    vm_offer     = "UbuntuServer"
+    vm_sku       = "18.04-LTS"
+
+  }
+
+  "BE_Compute_instance" = {
+    nic_name                          = "dev-eastus-nic2"
+    nic_location                      = "East US"
+    nic_resource_group_name           = "dev-eastus-rg1"
+    nic_ip_configuration_name         = "dev-eastus-ipconfig2"
+    nic_subnet_id                     = "/subscriptions/your-subscription-id/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/virtualNetworks/dev-eastus-vnet1/subnets/dev-backend-subnet2"
+    nic_private_ip_address_allocation = "Dynamic"
+
+    vm_name                = "dev-eastus-vm2"
+    vm_resource_group_name = "dev-eastus-rg1"
+    vm_location            = "East US"
+    vm_size                = "Standard_B1s"
+    vm_admin_username      = "adminuser"
+    vm_admin_password      = "P@ssw0rd1234!"
+
+    vm_publisher = "Canonical"
+    vm_offer     = "UbuntuServer"
+    vm_sku       = "18.04-LTS"
+
+  }
+}
+
