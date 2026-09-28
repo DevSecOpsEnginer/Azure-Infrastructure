@@ -14,3 +14,22 @@ variable "storage_accounts" {
     account_replication_type = string
   }))
 }
+
+variable "virtual_networks" {
+  type = map(object({
+    virtual_network_name = string
+    resource_group_name  = string
+    location             = string
+    address_space        = list(string)
+    dns_servers          = list(string)
+  }))
+}
+
+variable "subnets" {
+  type = map(object({
+    subnet_name          = string
+    resource_group_name  = string
+    virtual_network_name = string
+    address_prefixes     = list(string)
+  }))
+}
