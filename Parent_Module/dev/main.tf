@@ -32,3 +32,16 @@ module "public_ip" {
   source     = "../../azurerm_public_ip"
   publicIp   = var.publicIp
 }
+
+module "postgresql_flexible_server" {
+  depends_on                 = [module.subnets]
+  source                     = "../../azuerrm_database_server"
+  postgresql_flexible_server = var.postgresql_flexible_server
+}
+
+module "postgresql_flexible_server_database" {
+  depends_on                          = [module.postgresql_flexible_server]
+  source                              = "../../azurerm_database"
+  postgresql_flexible_server_database = var.postgresql_flexible_server_database
+}
+
