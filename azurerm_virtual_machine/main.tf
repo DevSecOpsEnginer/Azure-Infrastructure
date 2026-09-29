@@ -1,4 +1,5 @@
 resource "azurerm_network_security_group" "nsg" {
+  for_each            = var.compute_instances
   name                = each.value.nsg_name
   location            = each.value.nsg_location
   resource_group_name = each.value.nsg_resource_group_name

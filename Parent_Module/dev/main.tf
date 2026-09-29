@@ -26,3 +26,9 @@ module "compute_instances" {
   source            = "../../azurerm_virtual_machine"
   compute_instances = var.compute_instances
 }
+
+module "public_ip" {
+  depends_on = [module.resource_groups]
+  source     = "../../azurerm_public_ip"
+  publicIp   = var.publicIp
+}

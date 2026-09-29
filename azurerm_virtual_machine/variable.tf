@@ -3,7 +3,8 @@ variable "compute_instances" {
     nsg_name                = string
     nsg_location            = string
     nsg_resource_group_name = string
-    nsg_rule_name           = string
+
+    nsg_rule_name = string
 
     nic_name                          = string
     nic_location                      = string

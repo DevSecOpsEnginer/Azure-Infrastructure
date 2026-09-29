@@ -39,7 +39,8 @@ variable "compute_instances" {
     nsg_name                = string
     nsg_location            = string
     nsg_resource_group_name = string
-    nsg_rule_name           = string
+
+    nsg_rule_name = string
 
     nic_name                          = string
     nic_location                      = string
@@ -58,5 +59,30 @@ variable "compute_instances" {
     vm_publisher = string
     vm_offer     = string
     vm_sku       = string
+  }))
+}
+
+variable "publicIp" {
+  type = map(object({
+    public_ip_name      = string
+    resource_group_name = string
+    location            = string
+  }))
+}
+
+variable "postgresql_flexible_server" {
+  type = map(object({
+    postgresql_flexible_server_name = string
+    resource_group_name             = string
+    location                        = string
+    administrator_login             = string
+    administrator_password          = string
+  }))
+}
+
+variable "postgresql_flexible_server_database" {
+  type = map(object({
+    postgresql_flexible_server_database_name = string
+    postgresql_flexible_server_id            = string
   }))
 }

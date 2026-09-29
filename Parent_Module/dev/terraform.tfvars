@@ -45,7 +45,8 @@ compute_instances = {
     nsg_name                = "dev-eastus-nsg1"
     nsg_location            = "East US"
     nsg_resource_group_name = "dev-eastus-rg1"
-    nsg_rule_name           = "dev-eastus-nsg-rule1"
+
+    nsg_rule_name = "dev-eastus-nsg-rule1"
 
     nic_name                          = "dev-eastus-nic1"
     nic_location                      = "East US"
@@ -68,6 +69,12 @@ compute_instances = {
   }
 
   "BE_Compute_instance" = {
+    nsg_name                = "dev-eastus-nsg2"
+    nsg_location            = "East US"
+    nsg_resource_group_name = "dev-eastus-rg1"
+
+    nsg_rule_name = "dev-eastus-nsg-rule2"
+
     nic_name                          = "dev-eastus-nic2"
     nic_location                      = "East US"
     nic_resource_group_name           = "dev-eastus-rg1"
@@ -89,3 +96,27 @@ compute_instances = {
   }
 }
 
+publicIp = {
+  "pub1" = {
+    public_ip_name      = "dev-eastus-pubip1"
+    resource_group_name = "dev-eastus-rg1"
+    location            = "East US"
+  }
+}
+
+postgresql_flexible_server = {
+  "postgresql1" = {
+    postgresql_flexible_server_name = "dev-eastus-postgresql1"
+    resource_group_name             = "dev-eastus-rg1"
+    location                        = "East US"
+    administrator_login             = "psqladmin"
+    administrator_password          = "P@ssw0rd1234!"
+  }
+}
+
+postgresql_flexible_server_database = {
+  "db1" = {
+    postgresql_flexible_server_database_name = "dev-eastus-db1"
+    postgresql_flexible_server_id            = "/subscriptions/your-subscription-id/resourceGroups/dev-eastus-rg1/providers/Microsoft.DBforPostgreSQL/flexibleServers/dev-eastus-postgresql1"
+  }
+}
