@@ -1,3 +1,21 @@
+resource "azurerm_network_security_group" "nsg" {
+  name                = each.value.nsg_name
+  location            = each.value.nsg_location
+  resource_group_name = each.value.nsg_resource_group_name
+
+  security_rule {
+    name                       = each.value.nsg_rule_name
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+}
+
 resource "azurerm_network_interface" "nic" {
   for_each            = var.compute_instances
   name                = each.value.nic_name
@@ -21,7 +39,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_username                  = each.value.vm_admin_username
   admin_password                  = each.value.vm_admin_password
   network_interface_ids = [
-    azurerm_network_interface.nic.id,
+    azurerm_network_interface.nic[each.key].id,
   ]
 
   # admin_ssh_key {

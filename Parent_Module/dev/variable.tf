@@ -36,6 +36,11 @@ variable "subnets" {
 
 variable "compute_instances" {
   type = map(object({
+    nsg_name                = string
+    nsg_location            = string
+    nsg_resource_group_name = string
+    nsg_rule_name           = string
+
     nic_name                          = string
     nic_location                      = string
     nic_resource_group_name           = string

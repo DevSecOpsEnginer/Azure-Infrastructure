@@ -3,11 +3,11 @@ module "resource_groups" {
   resource_groups = var.resource_groups
 }
 
-module "storage_accounts" {
-  depends_on       = [module.resource_groups]
-  source           = "../../azurerm_storage_account"
-  storage_accounts = var.storage_accounts
-}
+# module "storage_accounts" {
+#   depends_on       = [module.resource_groups]
+#   source           = "../../azurerm_storage_account"
+#   storage_accounts = var.storage_accounts
+# }
 
 module "virtual_networks" {
   depends_on       = [module.resource_groups]
@@ -21,3 +21,8 @@ module "subnets" {
   subnets    = var.subnets
 }
 
+module "compute_instances" {
+  depends_on        = [module.subnets]
+  source            = "../../azurerm_virtual_machine"
+  compute_instances = var.compute_instances
+}

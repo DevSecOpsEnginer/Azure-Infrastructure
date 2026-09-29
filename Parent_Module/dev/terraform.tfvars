@@ -42,6 +42,11 @@ subnets = {
 
 compute_instances = {
   "FE_Compute_instance" = {
+    nsg_name                = "dev-eastus-nsg1"
+    nsg_location            = "East US"
+    nsg_resource_group_name = "dev-eastus-rg1"
+    nsg_rule_name           = "dev-eastus-nsg-rule1"
+
     nic_name                          = "dev-eastus-nic1"
     nic_location                      = "East US"
     nic_resource_group_name           = "dev-eastus-rg1"
