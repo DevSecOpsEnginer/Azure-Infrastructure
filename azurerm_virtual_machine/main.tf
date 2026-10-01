@@ -31,6 +31,13 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
+resource "azurerm_network_interface_security_group_association" "nsg-nic-associations" {
+  for_each = var.compute_instances
+
+  network_interface_id      = azurerm_network_interface.nic[each.key].id
+  network_security_group_id = azurerm_network_security_group.nsg[each.key].id
+}
+
 resource "azurerm_linux_virtual_machine" "vm" {
   for_each                        = var.compute_instances
   name                            = each.value.vm_name
@@ -40,6 +47,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   disable_password_authentication = false
   admin_username                  = each.value.vm_admin_username
   admin_password                  = each.value.vm_admin_password
+
   network_interface_ids = [
     azurerm_network_interface.nic[each.key].id,
   ]
