@@ -11,6 +11,7 @@ variable "compute_instances" {
     nic_resource_group_name           = string
     nic_ip_configuration_name         = string
     nic_subnet_id                     = string
+    nic_public_ip_address_id          = string
     nic_private_ip_address_allocation = string
 
     vm_name                = string

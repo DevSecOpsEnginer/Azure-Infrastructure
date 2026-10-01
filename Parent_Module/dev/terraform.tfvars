@@ -52,7 +52,8 @@ compute_instances = {
     nic_location                      = "East US"
     nic_resource_group_name           = "dev-eastus-rg1"
     nic_ip_configuration_name         = "dev-eastus-ipconfig1"
-    nic_subnet_id                     = "/subscriptions/your-subscription-id/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/virtualNetworks/dev-eastus-vnet1/subnets/dev-frontend-subnet1"
+    nic_subnet_id                     = ""
+    nic_public_ip_address_id          = ""
     nic_private_ip_address_allocation = "Dynamic"
 
     vm_name                = "dev-eastus-vm1"
@@ -79,7 +80,8 @@ compute_instances = {
     nic_location                      = "East US"
     nic_resource_group_name           = "dev-eastus-rg1"
     nic_ip_configuration_name         = "dev-eastus-ipconfig2"
-    nic_subnet_id                     = "/subscriptions/your-subscription-id/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/virtualNetworks/dev-eastus-vnet1/subnets/dev-backend-subnet2"
+    nic_subnet_id                     = ""
+    nic_public_ip_address_id          = ""
     nic_private_ip_address_allocation = "Dynamic"
 
     vm_name                = "dev-eastus-vm2"
@@ -117,6 +119,7 @@ postgresql_flexible_server = {
 postgresql_flexible_server_database = {
   "db1" = {
     postgresql_flexible_server_database_name = "dev-eastus-db1"
-    postgresql_flexible_server_id            = "/subscriptions/your-subscription-id/resourceGroups/dev-eastus-rg1/providers/Microsoft.DBforPostgreSQL/flexibleServers/dev-eastus-postgresql1"
+    postgresql_flexible_server_id            = ""
   }
 }
+

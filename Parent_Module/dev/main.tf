@@ -21,27 +21,27 @@ module "subnets" {
   subnets    = var.subnets
 }
 
-module "compute_instances" {
-  depends_on        = [module.subnets]
-  source            = "../../azurerm_virtual_machine"
-  compute_instances = var.compute_instances
-}
-
 module "public_ip" {
   depends_on = [module.resource_groups]
   source     = "../../azurerm_public_ip"
   publicIp   = var.publicIp
 }
 
-module "postgresql_flexible_server" {
-  depends_on                 = [module.subnets]
-  source                     = "../../azuerrm_database_server"
-  postgresql_flexible_server = var.postgresql_flexible_server
-}
+# module "compute_instances" {
+#   depends_on        = [module.subnets]
+#   source            = "../../azurerm_virtual_machine"
+#   compute_instances = var.compute_instances
+# }
 
-module "postgresql_flexible_server_database" {
-  depends_on                          = [module.postgresql_flexible_server]
-  source                              = "../../azurerm_database"
-  postgresql_flexible_server_database = var.postgresql_flexible_server_database
-}
+# module "postgresql_flexible_server" {
+#   depends_on                 = [module.subnets]
+#   source                     = "../../azuerrm_database_server"
+#   postgresql_flexible_server = var.postgresql_flexible_server
+# }
+
+# module "postgresql_flexible_server_database" {
+#   depends_on                          = [module.postgresql_flexible_server]
+#   source                              = "../../azurerm_database"
+#   postgresql_flexible_server_database = var.postgresql_flexible_server_database
+# }
 
