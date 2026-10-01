@@ -27,11 +27,11 @@ module "public_ip" {
   publicIp   = var.publicIp
 }
 
-# module "compute_instances" {
-#   depends_on        = [module.subnets, module.public_ip]
-#   source            = "../../azurerm_virtual_machine"
-#   compute_instances = var.compute_instances
-# }
+module "compute_instances" {
+  depends_on        = [module.subnets, module.public_ip]
+  source            = "../../azurerm_virtual_machine"
+  compute_instances = var.compute_instances
+}
 
 # module "postgresql_flexible_server" {
 #   depends_on                 = [module.subnets]

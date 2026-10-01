@@ -80,8 +80,8 @@ compute_instances = {
     nic_location                      = "East US"
     nic_resource_group_name           = "dev-eastus-rg1"
     nic_ip_configuration_name         = "dev-eastus-ipconfig2"
-    nic_subnet_id                     = ""
-    nic_public_ip_address_id          = ""
+    nic_subnet_id                     = "/subscriptions/9b5c4f38-6534-4978-808d-11b20dd8ad27/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/virtualNetworks/dev-eastus-vnet1/subnets/dev-backend-subnet2"
+    nic_public_ip_address_id          = "/subscriptions/9b5c4f38-6534-4978-808d-11b20dd8ad27/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/publicIPAddresses/dev-eastus-pubip2"
     nic_private_ip_address_allocation = "Dynamic"
 
     vm_name                = "dev-eastus-vm2"
