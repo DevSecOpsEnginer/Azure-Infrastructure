@@ -113,9 +113,9 @@ publicIp = {
 
 postgresql_flexible_server = {
   "postgresql1" = {
-    postgresql_flexible_server_name = "dev-eastus-postgresql1"
+    postgresql_flexible_server_name = "dev-westus2-postgresql1"
     resource_group_name             = "dev-eastus-rg1"
-    location                        = "East US"
+    location                        = "westus2"
     administrator_login             = "psqladmin"
     administrator_password          = "P@ssw0rd1234!"
   }
@@ -123,8 +123,8 @@ postgresql_flexible_server = {
 
 postgresql_flexible_server_database = {
   "db1" = {
-    postgresql_flexible_server_database_name = "dev-eastus-db1"
-    postgresql_flexible_server_id            = ""
+    postgresql_flexible_server_database_name = "dev-westus2-db1"
+    postgresql_flexible_server_id            = "/subscriptions/9b5c4f38-6534-4978-808d-11b20dd8ad27/resourceGroups/dev-eastus-rg1/providers/Microsoft.DBforPostgreSQL/flexibleServers/dev-westus2-postgresql1"
   }
 }
 
