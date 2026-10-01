@@ -45,8 +45,8 @@ module "postgresql_flexible_server_database" {
   postgresql_flexible_server_database = var.postgresql_flexible_server_database
 }
 
-# module "bastion_host" {
-#   depends_on   = [module.subnets, module.public_ip]
-#   source       = "../../azurerm_bastion_host"
-#   bastion_host = var.bastion_host
-# }
+module "bastion_host" {
+  depends_on   = [module.subnets, module.public_ip]
+  source       = "../../azurerm_bastion_host"
+  bastion_host = var.bastion_host
+}
