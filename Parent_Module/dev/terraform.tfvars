@@ -40,6 +40,16 @@ subnets = {
   }
 }
 
+bastion_host = {
+  "host1" = {
+    bastion_name                 = "dev-eastus-bastion1"
+    bastion_location             = "East US"
+    bastion_resource_group_name  = "dev-eastus-rg1"
+    bastion_subnet_id            = "/subscriptions/9b5c4f38-6534-4978-808d-11b20dd8ad27/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/virtualNetworks/dev-eastus-vnet1/subnets/AzureBastionSubnet"
+    bastion_public_ip_address_id = "/subscriptions/9b5c4f38-6534-4978-808d-11b20dd8ad27/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/publicIPAddresses/dev-eastus-bastion-pip1"
+  }
+}
+
 compute_instances = {
   "FE_Compute_instance" = {
     nsg_name                = "dev-eastus-nsg1"

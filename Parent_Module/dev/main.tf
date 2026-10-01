@@ -39,9 +39,9 @@ module "postgresql_flexible_server" {
   postgresql_flexible_server = var.postgresql_flexible_server
 }
 
-# module "postgresql_flexible_server_database" {
-#   depends_on                          = [module.postgresql_flexible_server]
-#   source                              = "../../azurerm_database"
-#   postgresql_flexible_server_database = var.postgresql_flexible_server_database
-# }
+module "postgresql_flexible_server_database" {
+  depends_on                          = [module.postgresql_flexible_server]
+  source                              = "../../azurerm_database"
+  postgresql_flexible_server_database = var.postgresql_flexible_server_database
+}
 
