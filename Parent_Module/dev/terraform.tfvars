@@ -38,6 +38,18 @@ subnets = {
     virtual_network_name = "dev-eastus-vnet1"
     address_prefixes     = ["10.0.2.0/24"]
   }
+  "db-subnet" = {
+    subnet_name          = "dev-db-subnet3"
+    resource_group_name  = "dev-eastus-rg1"
+    virtual_network_name = "dev-eastus-vnet1"
+    address_prefixes     = ["10.0.3.0/24"]
+  }
+  "bastion-subnet" = {
+    subnet_name          = "dev-bastion-subnet4"
+    resource_group_name  = "dev-eastus-rg1"
+    virtual_network_name = "dev-eastus-vnet1"
+    address_prefixes     = ["10.0.4.0/24"]
+  }
 }
 
 bastion_host = {
@@ -45,8 +57,8 @@ bastion_host = {
     bastion_name                 = "dev-eastus-bastion1"
     bastion_location             = "East US"
     bastion_resource_group_name  = "dev-eastus-rg1"
-    bastion_subnet_id            = "/subscriptions/9b5c4f38-6534-4978-808d-11b20dd8ad27/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/virtualNetworks/dev-eastus-vnet1/subnets/AzureBastionSubnet"
-    bastion_public_ip_address_id = "/subscriptions/9b5c4f38-6534-4978-808d-11b20dd8ad27/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/publicIPAddresses/dev-eastus-bastion-pip1"
+    bastion_subnet_id            = "/subscriptions/9b5c4f38-6534-4978-808d-11b20dd8ad27/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/virtualNetworks/dev-eastus-vnet1/subnets/dev-bastion-subnet4"
+    bastion_public_ip_address_id = "/subscriptions/9b5c4f38-6534-4978-808d-11b20dd8ad27/resourceGroups/dev-eastus-rg1/providers/Microsoft.Network/publicIPAddresses/dev-eastus-pubip1"
   }
 }
 
@@ -116,6 +128,11 @@ publicIp = {
   }
   "pub2" = {
     public_ip_name      = "dev-eastus-pubip2"
+    resource_group_name = "dev-eastus-rg1"
+    location            = "East US"
+  }
+  "bastion_pubip" = {
+    public_ip_name      = "dev-eastus-bastion-pubip"
     resource_group_name = "dev-eastus-rg1"
     location            = "East US"
   }
