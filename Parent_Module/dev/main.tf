@@ -33,11 +33,11 @@ module "compute_instances" {
   compute_instances = var.compute_instances
 }
 
-# module "postgresql_flexible_server" {
-#   depends_on                 = [module.subnets]
-#   source                     = "../../azuerrm_database_server"
-#   postgresql_flexible_server = var.postgresql_flexible_server
-# }
+module "postgresql_flexible_server" {
+  depends_on                 = [module.resource_groups]
+  source                     = "../../azuerrm_database_server"
+  postgresql_flexible_server = var.postgresql_flexible_server
+}
 
 # module "postgresql_flexible_server_database" {
 #   depends_on                          = [module.postgresql_flexible_server]

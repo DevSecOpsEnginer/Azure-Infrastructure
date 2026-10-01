@@ -59,7 +59,7 @@ compute_instances = {
     vm_name                = "dev-eastus-vm1"
     vm_resource_group_name = "dev-eastus-rg1"
     vm_location            = "East US"
-    vm_size                = "Standard_B1s"
+    vm_size                = "Standard_D2s_v4"
     vm_admin_username      = "adminuser"
     vm_admin_password      = "P@ssw0rd1234!"
 
@@ -87,7 +87,7 @@ compute_instances = {
     vm_name                = "dev-eastus-vm2"
     vm_resource_group_name = "dev-eastus-rg1"
     vm_location            = "East US"
-    vm_size                = "Standard_B1s"
+    vm_size                = "Standard_D2s_v4"
     vm_admin_username      = "adminuser"
     vm_admin_password      = "P@ssw0rd1234!"
 
