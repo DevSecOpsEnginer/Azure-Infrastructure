@@ -15,7 +15,7 @@ resource "azurerm_application_gateway" "network" {
   }
 
   frontend_port {
-    name = local.frontend_port_name
+    name = ""
     port = 80
   }
 
