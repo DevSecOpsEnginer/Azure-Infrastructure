@@ -68,4 +68,18 @@ resource "azurerm_linux_virtual_machine" "vm" {
     sku       = each.value.vm_sku
     version   = "latest"
   }
+
+  //nginx 
+  custom_data = base64encode(<<-EOF
+    #!/bin/bash
+    set -eux
+    apt-get update
+    apt-get install -y nginx
+    systemctl enable nginx
+    systemctl start nginx
+    echo "<h1>NGINX deployed using Terraform!</h1>" > /var/www/html/index.html
+  EOF
+  )
 }
+
+
