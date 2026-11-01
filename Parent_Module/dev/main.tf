@@ -45,11 +45,11 @@ module "postgresql_flexible_server_database" {
   postgresql_flexible_server_database = var.postgresql_flexible_server_database
 }
 
-# module "bastion_host" {
-#   depends_on   = [module.subnets, module.public_ip]
-#   source       = "../../Child_module/azurerm_bastion_host"
-#   bastion_host = var.bastion_host
-# }
+module "bastion_host" {
+  depends_on   = [module.subnets, module.public_ip]
+  source       = "../../Child_module/azurerm_bastion_host"
+  bastion_host = var.bastion_host
+}
 
 module "azurerm_application_gateway" {
   depends_on = [module.subnets, module.public_ip, module.compute_instances]
