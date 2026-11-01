@@ -12,7 +12,7 @@ resource "azurerm_application_gateway" "network" {
 
   gateway_ip_configuration {
     name      = "my-gateway-ip-configuration"
-    subnet_id = 
+    subnet_id = data.azurerm_subnet.subnet[each.value].id
   }
 
   frontend_port {
@@ -22,7 +22,7 @@ resource "azurerm_application_gateway" "network" {
 
   frontend_ip_configuration {
     name                 = "frontend-ip-config"
-    public_ip_address_id = azurerm_public_ip.example.id
+    public_ip_address_id = data.azurerm_public_ip.public_ip[each.value].id
   }
 
   backend_address_pool {
