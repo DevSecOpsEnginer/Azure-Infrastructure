@@ -50,3 +50,9 @@ module "postgresql_flexible_server_database" {
 #   source       = "../../Child_module/azurerm_bastion_host"
 #   bastion_host = var.bastion_host
 # }
+
+module "azurerm_application_gateway" {
+  depends_on = [module.subnets, module.public_ip, module.compute_instances]
+  source     = "../../Child_module/azurerm_application_gateway"
+  appgateway = var.appgateway
+}

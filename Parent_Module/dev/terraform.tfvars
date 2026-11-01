@@ -155,3 +155,13 @@ postgresql_flexible_server_database = {
   }
 }
 
+appgateway = {
+  appgw1 = {
+    name           = "appgw-dev"
+    location       = "centralindia"
+    rg_name        = "rg-chor-dev"
+    subnet_name    = "AppGatewaySubnet"
+    vnet_name      = "vnet-chor-dev"
+    public_ip_name = "pip-appgw-dev"
+  }
+}

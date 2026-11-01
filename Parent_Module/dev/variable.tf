@@ -97,3 +97,8 @@ variable "postgresql_flexible_server_database" {
     postgresql_flexible_server_id            = string
   }))
 }
+
+variable "appgateway" {
+  type = map(any)
+}
+
